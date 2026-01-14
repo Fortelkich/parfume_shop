@@ -23,6 +23,7 @@ export async function getTelegramUser() {
         id: "dev-user",
         firstName: "Dev",
         lastName: "User",
+        phone: null,
         telegramUsername: "devuser",
         role: (isAdmin ? "ADMIN" : "CUSTOMER") as const
       };
