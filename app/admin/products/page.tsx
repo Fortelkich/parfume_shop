@@ -69,8 +69,9 @@ export default function AdminProductsPage() {
       .filter(Boolean);
 
   const submit = async () => {
+    const { id: _id, ...rest } = draft;
     const payload = {
-      ...draft,
+      ...rest,
       price: Number(draft.price),
       volumeMl: Number(draft.volumeMl)
     };
@@ -81,7 +82,7 @@ export default function AdminProductsPage() {
         "Content-Type": "application/json",
         "X-Telegram-Init-Data": initData || ""
       },
-      body: JSON.stringify(editingId ? { id: editingId, ...payload } : payload)
+      body: JSON.stringify(editingId ? { ...payload, id: editingId } : payload)
     });
 
     setDraft(emptyProduct);
